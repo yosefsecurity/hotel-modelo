@@ -4,453 +4,303 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hotel Palace Carangola</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f4f6f8 0%, #e8ecf1 100%);
-  color: #333;
-  line-height: 1.6;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Poppins',Arial,sans-serif;
+  background:#f4f6f8;
+  color:#333;
 }
 
-/* Variáveis de cor atualizadas para um visual mais moderno */
-:root {
-  --primary: #0f2a44;
-  --secondary: #1e4f7a;
-  --accent: #f4a261;
-  --white: #ffffff;
-  --light-gray: #f8f9fa;
-  --shadow: rgba(0, 0, 0, 0.1);
-  --border-radius: 12px;
+/* CORES */
+:root{
+  --primary:#0f2a44;
+  --secondary:#1e4f7a;
+  --accent:#e0b973;
+  --white:#fff;
 }
 
-/* Header com gradiente sutil e blur */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: linear-gradient(90deg, rgba(15, 42, 68, 0.95) 0%, rgba(30, 79, 122, 0.95) 100%);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  z-index: 1000;
-  padding: 16px 24px;
-  box-shadow: 0 4px 20px var(--shadow);
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(15,42,68,.95);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+  padding:14px 20px;
 }
 
-.header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.logo {
-  color: var(--white);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+.logo{
+  color:#fff;
+  font-size:1.4rem;
+  font-weight:600;
 }
 
-.menu-btn {
-  font-size: 1.8rem;
-  color: var(--white);
-  cursor: pointer;
-  display: none;
-  transition: transform 0.3s ease;
+.menu-btn{
+  font-size:2rem;
+  color:#fff;
+  cursor:pointer;
+  display:none;
 }
 
-.menu-btn:hover {
-  transform: scale(1.1);
+/* NAV */
+nav{
+  display:flex;
+  gap:35px;
 }
 
-/* Nav com animações aprimoradas */
-nav {
-  display: flex;
-  gap: 40px;
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  position:relative;
 }
 
-nav a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s ease;
+nav a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--accent);
+  transform:translateX(-50%);
+  transition:.3s;
 }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -8px;
-  width: 0;
-  height: 3px;
-  background: var(--accent);
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
+nav a:hover::after{width:120%}
+nav a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+  url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
 }
 
-nav a:hover::after {
-  width: 100%;
+.hero h1{
+  font-size:clamp(2.2rem,6vw,3.6rem);
+  color:#fff;
 }
 
-nav a:hover {
-  color: var(--accent);
+.hero p{
+  font-size:clamp(1rem,4vw,1.3rem);
+  color:#eee;
+  margin-top:12px;
 }
 
-/* Hero com overlay gradiente e botão CTA */
-.hero {
-  height: 100vh;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%),
-              url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 24px;
-  position: relative;
+/* SECTIONS */
+section{padding:90px 20px}
+.container{max-width:1200px;margin:auto}
+
+h2{
+  text-align:center;
+  font-size:clamp(1.9rem,5vw,2.5rem);
+  color:var(--primary);
+  margin-bottom:40px;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.2) 100%);
+/* SOBRE */
+#sobre p{
+  max-width:950px;
+  margin:auto;
+  font-size:1.1rem;
+  line-height:1.9;
+  text-align:center;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
+/* ACOMODAÇÕES */
+#accomodacoes,
+#acomodacoes{background:#eef2f6}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
 }
 
-.hero h1 {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  color: var(--white);
-  font-weight: 700;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+.card{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  cursor:pointer;
+  transition:.35s;
+  touch-action:manipulation;
 }
 
-.hero p {
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
-  color: #f0f0f0;
-  margin-bottom: 32px;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+.card:hover{
+  transform:translateY(-10px);
 }
 
-.cta-btn {
+.card img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+}
+
+.card div{padding:22px}
+.card span{
+  font-size:.8rem;
+  font-weight:600;
+  color:var(--accent);
+}
+.card h3{
+  margin:6px 0;
+  color:var(--primary);
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.75);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+
+.modal-content{
+  background:#fff;
+  width:92%;
+  max-width:750px;
+  max-height:85vh;
+  overflow-y:auto;
+  border-radius:20px;
+  padding:30px;
+  position:relative;
+  animation:zoom .3s;
+}
+
+@keyframes zoom{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* Botão Reserve Agora */
+.reserve-btn {
   display: inline-block;
-  padding: 14px 32px;
+  padding: 12px 24px;
   background: var(--accent);
   color: var(--primary);
   text-decoration: none;
   font-weight: 600;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
+  margin-top: 20px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(244, 162, 97, 0.4);
+  box-shadow: 0 4px 10px rgba(224, 185, 115, 0.3);
 }
 
-.cta-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(244, 162, 97, 0.6);
-}
-
-/* Seções com padding e background */
-section {
-  padding: 100px 24px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-h2 {
-  text-align: center;
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  color: var(--primary);
-  margin-bottom: 50px;
-  font-weight: 600;
-  position: relative;
-}
-
-h2::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-}
-
-/* Sobre com melhor tipografia */
-#sobre p {
-  max-width: 900px;
-  margin: 0 auto;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  text-align: center;
-  color: #555;
-}
-
-/* Acomodações com grid responsivo e efeitos */
-#accomodacoes {
-  background: var(--light-gray);
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: 0 10px 30px var(--shadow);
-  cursor: pointer;
-  transition: all 0.4s ease;
-  transform: translateY(0);
-}
-
-.card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-}
-
-.card-content {
-  padding: 24px;
-}
-
-.card span {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.card h3 {
-  margin: 8px 0 12px;
-  color: var(--primary);
-  font-weight: 600;
-}
-
-.card p {
-  color: #666;
-  font-size: 0.95rem;
-}
-
-/* Modal aprimorado */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  backdrop-filter: blur(5px);
-}
-
-.modal-content {
-  background: var(--white);
-  width: 90%;
-  max-width: 700px;
-  max-height: 80vh;
-  overflow-y: auto;
-  border-radius: var(--border-radius);
-  padding: 32px;
-  position: relative;
-  animation: zoomIn 0.3s ease-out;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.close {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-  color: #999;
-  transition: color 0.3s ease;
-}
-
-.close:hover {
-  color: var(--primary);
-}
-
-/* Contato com form melhorado */
-form {
-  max-width: 550px;
-  margin: 0 auto;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 16px;
-  margin-bottom: 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.1);
-}
-
-button {
-  width: 100%;
-  padding: 16px;
-  background: var(--accent);
-  border: none;
-  font-weight: 600;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
-}
-
-button:hover {
-  background: #e6935a;
+.reserve-btn:hover {
+  background: #d4a05f;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(244, 162, 97, 0.4);
+  box-shadow: 0 6px 15px rgba(224, 185, 115, 0.5);
 }
 
-/* Footer com gradiente */
-footer {
-  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-  color: var(--white);
-  text-align: center;
-  padding: 40px 24px;
-  font-size: 0.95rem;
+/* CONTATO */
+form{
+  max-width:520px;
+  margin:auto;
 }
 
-/* WhatsApp com animação */
-.whatsapp {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  color: var(--white);
-  text-decoration: none;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-  transition: all 0.3s ease;
-  animation: pulse 2s infinite;
+input,textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
 
-.whatsapp:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+button{
+  width:100%;
+  padding:15px;
+  background:var(--accent);
+  border:none;
+  font-weight:600;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-  }
-  50% {
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-  }
-  100% {
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-  }
+/* FOOTER */
+footer{
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:30px;
 }
 
-/* Mobile responsivo */
-@media (max-width: 768px) {
-  .menu-btn {
-    display: block;
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:55px;
+  height:55px;
+  background:#25d366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .menu-btn{display:block}
+
+  nav{
+    position:absolute;
+    top:65px;
+    left:0;
+    width:100%;
+    background:rgba(15,42,68,.98);
+    flex-direction:column;
+    gap:20px;
+    padding:25px 0;
+    display:none;
   }
 
-  nav {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, rgba(15, 42, 68, 0.98) 0%, rgba(30, 79, 122, 0.98) 100%);
-    flex-direction: column;
-    gap: 24px;
-    padding: 32px 0;
-    display: none;
-    box-shadow: 0 4px 20px var(--shadow);
-  }
+  nav.active{display:flex}
 
-  nav.active {
-    display: flex;
-  }
+  nav a{font-size:1.1rem}
 
-  nav a {
-    font-size: 1.2rem;
-  }
-
-  section {
-    padding: 80px 20px;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero p {
-    font-size: 1.1rem;
-  }
+  section{padding:70px 16px}
 }
 </style>
 </head>
@@ -471,10 +321,9 @@ footer {
 </header>
 
 <section class="hero" id="home">
-  <div class="hero-content">
+  <div>
     <h1>Hotel Palace Carangola</h1>
     <p>Conforto, elegância e hospitalidade no coração da cidade</p>
-    <a href="#contato" class="cta-btn">Reserve Agora</a>
   </div>
 </section>
 
@@ -495,29 +344,29 @@ footer {
 
     <div class="cards">
       <div class="card" onclick="openModal('classic')">
-        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32" alt="Apartamento Classic">
-        <div class="card-content">
+        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32">
+        <div>
           <span>STANDARD</span>
           <h3>Apartamento Classic</h3>
-          <p>Funcionalidade e conforto para uma estadia agradável.</p>
+          <p>Funcionalidade e conforto.</p>
         </div>
       </div>
 
       <div class="card" onclick="openModal('suite')">
-        <img src="https://images.unsplash.com/photo-1631049035182-249067d7618e" alt="Suíte Classic">
-        <div class="card-content">
+        <img src="https://images.unsplash.com/photo-1631049035182-249067d7618e">
+        <div>
           <span>SUPERIOR</span>
           <h3>Suíte Classic</h3>
-          <p>Mais espaço e privacidade para o seu descanso.</p>
+          <p>Mais espaço e privacidade.</p>
         </div>
       </div>
 
       <div class="card" onclick="openModal('master')">
-        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39" alt="Suíte Master">
-        <div class="card-content">
+        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39">
+        <div>
           <span>PREMIUM</span>
           <h3>Suíte Master</h3>
-          <p>Experiência sofisticada com luxo e comodidade.</p>
+          <p>Experiência sofisticada.</p>
         </div>
       </div>
     </div>
@@ -543,7 +392,7 @@ footer {
       <button>Solicitar Reserva</button>
     </form>
 
-    <p style="text-align:center;margin-top:24px;font-size:1rem;color:#666">
+    <p style="text-align:center;margin-top:20px">
       📍 Rua Pedro de Oliveira, 368 – Centro – Carangola/MG<br>
       📞 (32) 99990-3895
     </p>
@@ -554,27 +403,32 @@ footer {
   © Hotel Palace Carangola – Todos os direitos reservados
 </footer>
 
-<a class="whatsapp" href="https://wa.me/5532999903895" target="_blank" aria-label="Contato via WhatsApp">💬</a>
+<a class="whatsapp" href="https://wa.me/5532999903895" target="_blank">💬</a>
 
 <script>
-function toggleMenu() {
+function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
-function closeMenu() {
+function closeMenu(){
   document.getElementById("menu").classList.remove("active");
 }
-function openModal(tipo) {
-  const modal = document.getElementById("modal");
-  const text = document.getElementById("modalText");
+function openModal(tipo){
+  const modal=document.getElementById("modal");
+  const text=document.getElementById("modalText");
 
-  const dados = {
-    classic: `
-      <h2>Apartamento Classic</h2>
-      <p>Conforto e praticidade com excelente custo-benefício. Perfeito para estadias curtas ou longas, oferecendo tudo o que você precisa para se sentir em casa.</p>
-      <h3>O que tem no quarto:</h3>
-      <ul>
-        <li><strong>Tamanho:</strong> 20 m²</li>
-        <li><strong>Cama:</strong> Cama de solteiro ou casal com lençóis de algodão egípcio</li>
-        <li><strong>Ar-condicionado</strong> split com controle remoto</li>
-        <li><strong>TV LED 32"</strong> com canais a cabo e Netflix</li>
-        <li><strong>Wi-Fi gratuito</strong> de
+  const dados={
+    classic:`<h2>Apartamento Classic</h2><p>Conforto e praticidade com excelente custo-benefício.</p><ul><li>Ar-condicionado</li><li>TV LED</li><li>Wi-Fi</li><li>Banheiro privativo</li></ul><a href="https://wa.me/5532999903895?text=Olá, gostaria de reservar o Apartamento Classic" class="reserve-btn" target="_blank">Reserve Agora</a>`,
+    suite:`<h2>Suíte Classic</h2><p>Mais espaço e privacidade para sua estadia.</p><ul><li>Cama queen</li><li>Ambiente climatizado</li><li>Wi-Fi rápido</li></ul><a href="https://wa.me/5532999903895?text=Olá, gostaria de reservar a Suíte Classic" class="reserve-btn" target="_blank">Reserve Agora</a>`,
+    master:`<h2>Suíte Master</h2><p>Experiência premium com conforto superior.</p><ul><li>Ambiente amplo</li><li>Design sofisticado</li><li>Ideal para ocasiões especiais</li></ul><a href="https://wa.me/5532999903895?text=Olá, gostaria de reservar a Suíte Master" class="reserve-btn" target="_blank">Reserve Agora</a>`
+  };
+
+  text.innerHTML=dados[tipo];
+  modal.style.display="flex";
+}
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+</script>
+
+</body>
+</html>
